@@ -1,9 +1,9 @@
-public class Pessoa {
+public class Pessoa { // classe pai
     public String nome;
     public float rendimento;
     public Endereco endereco;
-    public float CalcularImposto(float redimento){
-        return redimento;
+    public float CalcularImposto(float rendimento){
+        return rendimento;
 
     }
 
