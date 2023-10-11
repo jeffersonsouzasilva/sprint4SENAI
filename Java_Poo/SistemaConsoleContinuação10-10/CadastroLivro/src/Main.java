@@ -36,6 +36,13 @@ public class Main {
 
                     novaLivro.dataLancamento = date;
 
+                    if (periodo.getYears() >= 18){
+                        System.out.println("Esse Livro tem mais de 5 anos");
+                    }else{
+                        System.out.println("Esse Livro tem menos de 5 anos. Retornando menu...");
+                        break; // para voltar ao menu anterior
+                    }
+
 
                     System.out.println("Digite o nome do Autor: ");
                     novoAutor.nome = scanner.next();
