@@ -36,7 +36,7 @@ public class Main {
 
                     novaLivro.dataLancamento = date;
 
-                    if (periodo.getYears() >= 18){
+                    if (periodo.getYears() >= 5){
                         System.out.println("Esse Livro tem mais de 5 anos");
                     }else{
                         System.out.println("Esse Livro tem menos de 5 anos. Retornando menu...");
