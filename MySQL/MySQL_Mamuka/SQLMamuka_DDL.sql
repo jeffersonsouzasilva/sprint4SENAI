@@ -12,11 +12,11 @@ CREATE TABLE tb_usuario (
 id BINARY(16) NOT NULL,
 id_tipousuario BINARY(16) NOT NULL,
 nome VARCHAR(255) NOT NULL,
-cpf VARCHAR(11) NOT NULL, /*confirmar*/
-data_nascimento DATE, /*confirmar*/
+cpf VARCHAR(255) NOT NULL, /*confirmar*/
+data_nascimento DATE,
 status_atividade BOOL,
 departamento VARCHAR(255) NOT NULL,
-responsavel VARCHAR(255) NOT NULL,
+responsavel BINARY(16) NOT NULL,
 perfil VARCHAR(255) NOT NULL,
 cargo VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL UNIQUE,
