@@ -16,7 +16,7 @@ cpf VARCHAR(255) NOT NULL, /*confirmar*/
 data_nascimento DATE,
 status_atividade BOOL,
 departamento VARCHAR(255) NOT NULL,
-responsavel BINARY(16) NOT NULL,
+id_responsavel BINARY(16) NOT NULL, /* melhor id(responsavel) para api */
 perfil VARCHAR(255) NOT NULL,
 cargo VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL UNIQUE,
