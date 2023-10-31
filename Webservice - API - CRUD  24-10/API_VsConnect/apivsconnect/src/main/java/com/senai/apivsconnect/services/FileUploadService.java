@@ -1,12 +1,11 @@
 package com.senai.apivsconnect.services;
 
-
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,11 +15,11 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class FileUploadService {
     private final Path diretorioImg = Paths.get(System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img");
-    //metodo upload
-    public String FazerUpload(MultipartFile imagem) throws IOException { //throws IOException para tratamento de erros, sem esse da erro na linha que se refere a transmissao
 
-        if (imagem.isEmpty()) {
-            System.out.println("imagem vazia");
+    public String FazerUpload(MultipartFile imagem) throws IOException {
+
+        if (imagem.isEmpty()){
+            System.out.println("Imagem vazia");
             return null;
         }
 
@@ -34,19 +33,12 @@ public class FileUploadService {
 
         File imagemCriada = new File(diretorioImg + "\\" + novoNomeImagem);
 
-        BufferedInputStream stream = new BufferedInputStream(new FileInputStream(imagemCriada)); //canal de transmissao
+        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imagemCriada));
 
         stream.write(imagem.getBytes());
         stream.close();
 
         return novoNomeImagem;
-
-
-
-
-
-
-
 
 
     }
