@@ -15,6 +15,9 @@ import java.util.UUID;
 @Table(name = "tb_tarefa")
 public class TarefaModel implements Serializable {
     @Serial
+    private static final long serialVersionUID = 1L;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
