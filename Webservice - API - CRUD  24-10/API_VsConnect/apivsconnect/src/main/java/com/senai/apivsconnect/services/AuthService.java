@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthService implements UserDetailsService {
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -15,9 +17,8 @@ public class AuthService implements UserDetailsService {
         var usuario = usuarioRepository.findByEmail(username);
 
         if (usuario == null) {
-            throw new UsernameNotFoundException("Usuario nao encontrado")
+            throw new UsernameNotFoundException("Usuário não encontrado!");
         }
-
 
         return usuario;
     }

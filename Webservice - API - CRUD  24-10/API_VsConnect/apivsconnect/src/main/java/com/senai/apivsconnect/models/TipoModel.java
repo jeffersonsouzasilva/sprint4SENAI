@@ -4,12 +4,13 @@ public enum TipoModel {
     ADMIN("admin"),
     DESENVOLVEDOR("dev"),
     CLIENTE("cliente");
+
     private String tipo;
-    TipoModel(String tipo){
+
+    TipoModel(String tipo) {
         this.tipo = tipo;
     }
-
-    public String getRole(){
+    public String getRole() {
         return tipo;
     }
 }

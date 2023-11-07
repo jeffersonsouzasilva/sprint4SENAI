@@ -24,7 +24,6 @@ public class UsuarioModel implements Serializable, UserDetails { /* adicionado U
     /* adicionado @Serial
     private static final long serialVersionUID = 1L;*/
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -43,16 +42,17 @@ public class UsuarioModel implements Serializable, UserDetails { /* adicionado U
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (this.tipo_usuario == TipoModel.ADMIN){
+        if (this.tipo_usuario == TipoModel.ADMIN) {
             return List.of(
                     new SimpleGrantedAuthority("ROLE_ADMIN"),
                     new SimpleGrantedAuthority("ROLE_DESENVOLVEDOR"),
                     new SimpleGrantedAuthority("ROLE_CLIENTE")
             );
-        } else if (this.tipo_usuario == TipoModel.DESENVOLVEDOR){
+        } else if (this.tipo_usuario == TipoModel.DESENVOLVEDOR) {
             return List.of(new SimpleGrantedAuthority("ROLE_DESENVOLVEDOR"));
-        }else if (this.tipo_usuario == TipoModel.CLIENTE){
+        } else if (this.tipo_usuario == TipoModel.CLIENTE) {
             return List.of(new SimpleGrantedAuthority("ROLE_CLIENTE"));
+        }
 
         return null;
     }
