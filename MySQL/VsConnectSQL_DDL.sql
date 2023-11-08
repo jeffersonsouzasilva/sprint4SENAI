@@ -63,3 +63,15 @@ FOREIGN KEY(id_servico) REFERENCES tb_servico(id)
 ALTER TABLE tb_servico MODIFY COLUMN id_dev BINARY(16);
 DROP TABLE tb_techservico;
 DROP TABLE tb_devtech;
+
+
+/* Os proximos itens sao altenacoes feitas para altorizacao da criptografia dia 07 do 11*/ 
+
+SELECT * FROM  tb_usuario;
+
+UPDATE tb_usuario
+SET tipo_usuario = null
+WHERE  1=1;
+
+ALTER TABLE tb_usuario
+MODIFY tipo_usuario tinyint;

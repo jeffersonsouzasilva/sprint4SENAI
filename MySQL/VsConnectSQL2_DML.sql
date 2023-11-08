@@ -102,3 +102,12 @@ UUID_TO_BIN("d52f6fde-6ed3-11ee-8ca0-601895503df2"),
 UUID_TO_BIN("ce7dd82b-6ede-11ee-8ca0-601895503df2"),
 5000.00
 );
+
+SELECT * FROM  tb_usuario;
+
+UPDATE tb_usuario
+SET tipo_usuario = null
+WHERE  1=1;
+
+ALTER TABLE tb_usuario
+MODIFY tipo_usuario tinyint;
