@@ -38,7 +38,7 @@ public class UsuarioController {
 
         if (usuarioBuscado.isEmpty()) {
             // Retornar usuario não encontrado
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado"); // retorno erro 404 ou seja usuario nao encontrado
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(usuarioBuscado.get());
@@ -48,7 +48,7 @@ public class UsuarioController {
     public ResponseEntity<Object> cadastrarUsuario(@ModelAttribute @Valid UsuarioDto usuarioDto) {
         if (usuarioRepository.findByEmail(usuarioDto.email()) != null) {
             // Não pode cadastrar
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Esse email já está cadastrado!"); //BAD_REQUEST erro 400
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Esse email já está cadastrado!");
         }
 
         UsuarioModel usuario = new UsuarioModel();

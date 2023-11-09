@@ -16,10 +16,7 @@ public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    private final Algorithm algorithm = Algorithm.HMAC256(secret);
-
-    public String gerarToken(UsuarioModel usuario){
-
+    public String gerarToken(UsuarioModel usuario) {
         try {
             Algorithm algoritmo = Algorithm.HMAC256(secret);
 
@@ -31,27 +28,27 @@ public class TokenService {
                     .sign(algoritmo);
 
             return token;
-        } catch (JWTCreationException exception){
-            throw new RuntimeException("Erro na criacao do token: ", exception);
+        } catch(JWTCreationException exception) {
+            throw new RuntimeException("Erro na criação do token: ", exception);
         }
-
     }
 
-    public String validarToken(String token){
+    public String validarToken(String token) {
         try {
             Algorithm algoritmo = Algorithm.HMAC256(secret);
 
-            return  JWT.require(algoritmo)
+            return JWT.require(algoritmo)
                     .withIssuer("api-vsconnect")
                     .build()
                     .verify(token)
                     .getSubject();
-        } catch (JWTCreationException exception) {
+
+        } catch(JWTCreationException exception) {
             return "";
         }
     }
 
-    public Instant gerarValidadeToken(){
+    public Instant gerarValidadeToken() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Repository /*adicionado*/
+@Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, UUID> {
     UserDetails findByEmail(String email);
 }

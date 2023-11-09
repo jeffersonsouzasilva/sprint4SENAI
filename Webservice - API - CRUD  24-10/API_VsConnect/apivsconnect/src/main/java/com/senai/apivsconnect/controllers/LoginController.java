@@ -10,11 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class LoginController {
-
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -22,14 +24,13 @@ public class LoginController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody @Valid LoginDto dados){
+    public ResponseEntity<Object> login(@RequestBody @Valid LoginDto dados) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
 
         var auth = authenticationManager.authenticate(usernamePassword); // linha verifica se esta autenticado ou nao
 
-        var token = tokenService.gerarToken((UsuarioModel) auth.getPrincipal());
+        var token = tokenService.gerarToken( (UsuarioModel) auth.getPrincipal() );
 
         return ResponseEntity.status(HttpStatus.OK).body(new TokenDto(token));
-
     }
 }

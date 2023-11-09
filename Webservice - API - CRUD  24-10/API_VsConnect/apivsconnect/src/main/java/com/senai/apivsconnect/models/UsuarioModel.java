@@ -16,20 +16,16 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_usuario") /* modificado para o nome da tabela */
-public class UsuarioModel implements Serializable, UserDetails { /* adicionado UsuarioModel implements Serializable*/
+@Table(name = "tb_usuario")
+public class UsuarioModel implements Serializable, UserDetails {
     @Serial
     private static final long serialVersionUID = 1L;
-
-    /* adicionado @Serial
-    private static final long serialVersionUID = 1L;*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    /*adicionado nome, email,senha, endereco, cep, url_img, tudo de acordo com a tabela do banco de dados*/
     private String nome;
     private String email;
     private String senha;
@@ -37,7 +33,6 @@ public class UsuarioModel implements Serializable, UserDetails { /* adicionado U
     private String cep;
     private String url_img;
 
-    //Provisioriamente String, sera alterado para TipoModel enum
     private TipoModel tipo_usuario;
 
     @Override
