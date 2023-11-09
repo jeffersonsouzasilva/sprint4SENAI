@@ -1,6 +1,9 @@
 package com.senai.apivsconnect.controllers;
 
 import com.senai.apivsconnect.dtos.LoginDto;
+import com.senai.apivsconnect.dtos.TokenDto;
+import com.senai.apivsconnect.models.UsuarioModel;
+import com.senai.apivsconnect.services.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +18,18 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody @Valid LoginDto dados){
         var usernamePassword = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
 
         var auth = authenticationManager.authenticate(usernamePassword); // linha verifica se esta autenticado ou nao
 
-        return ResponseEntity.status(HttpStatus.OK).body("Logadooo!");
+        var token = tokenService.gerarToken((UsuarioModel) auth.getPrincipal());
+
+        return ResponseEntity.status(HttpStatus.OK).body(new TokenDto(token));
 
     }
 }
