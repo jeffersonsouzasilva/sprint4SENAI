@@ -49,3 +49,4 @@ FOREIGN KEY(id_projeto) REFERENCES tb_projeto(id)
 );
 
 DROP TABLE tb_tipousuario;
+

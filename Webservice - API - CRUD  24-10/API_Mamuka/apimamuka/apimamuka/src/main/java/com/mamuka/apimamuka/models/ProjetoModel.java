@@ -16,7 +16,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_projeto")
 public class ProjetoModel implements Serializable {
-    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -24,6 +23,8 @@ public class ProjetoModel implements Serializable {
     @Column(name = "id", nullable = false)
     private UUID id;
 
+    @ManyToOne
+    @JoinColumn(name = "id_gestor", referencedColumnName = "id")
     //    private UUID id_gestor ;
     private String gestor ;
 

@@ -22,9 +22,13 @@ public class TarefaModel implements Serializable {
     @Column(name = "id", nullable = false)
     private UUID id;
 
+    @ManyToOne
+    @JoinColumn(name = "id_dev", referencedColumnName = "id")
     //    private UUID id_dev ;
     private String dev ;
 
+    @ManyToOne
+    @JoinColumn(name = "id_projeto", referencedColumnName = "id")
     //    private UUID id_projeto ;
     private String projeto ;
 

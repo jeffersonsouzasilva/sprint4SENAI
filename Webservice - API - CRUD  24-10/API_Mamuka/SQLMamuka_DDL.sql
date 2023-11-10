@@ -20,8 +20,10 @@ id_responsavel BINARY(16) NOT NULL, /* melhor id(responsavel) para api */
 perfil VARCHAR(255) NOT NULL,
 cargo VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL UNIQUE,
+senha VARCHAR(255) NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY(id_tipousuario) REFERENCES tb_tipousuario(id)
+FOREIGN KEY(id_tipousuario) REFERENCES tb_tipousuario(id),
+UNIQUE KEY email (email)
 );
 
 CREATE TABLE tb_projeto (
@@ -49,3 +51,7 @@ FOREIGN KEY(id_projeto) REFERENCES tb_projeto(id)
 );
 
 DROP TABLE tb_tipousuario;
+DROP TABLE  tb_usuario;
+
+ALTER TABLE tb_usuario
+ADD column senha VARCHAR(255) NOT NULL;

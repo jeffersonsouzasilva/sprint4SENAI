@@ -4,6 +4,7 @@ import com.mamuka.apimamuka.dtos.ProjetoDto;
 import com.mamuka.apimamuka.models.ProjetoModel;
 import com.mamuka.apimamuka.models.UsuarioModel;
 import com.mamuka.apimamuka.repositories.ProjetoRepository;
+import com.mamuka.apimamuka.repositories.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/projeto", produces = {"application/json"})
+@RequestMapping(value = "/projetos", produces = {"application/json"})
 public class ProjetoController {
     @Autowired
     ProjetoRepository projetoRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @GetMapping
     public ResponseEntity<List<ProjetoModel>> listarProjetos(){
@@ -40,13 +44,21 @@ public class ProjetoController {
 
     //@PostMapping
     @PostMapping
-    public ResponseEntity<Object> cadastrarProjeto(@ModelAttribute @Valid ProjetoDto projetoDto){
+    public ResponseEntity<Object> cadastrarProjeto(@RequestBody @Valid ProjetoDto projetoDto){
+        ProjetoModel projetoModel = new ProjetoModel();
+
+        BeanUtils.copyProperties(projetoDto, projetoModel);
+
+        var gestor = usuarioRepository.findById(projetoDto.id_gestor());
+
+        if (gestor.isPresent()){
+            projetoModel.setGestor(gestor.get());
+        } else {
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("id_gestor não encontrado");
+        }
 
 
-
-
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(projetoRepository.save(projetoModel));
+        return ResponseEntity.status(HttpStatus.CREATED).body(projetoRepository.save(projetoModel));
     }
 
 
