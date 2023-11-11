@@ -3,14 +3,19 @@ package com.mamuka.apimamuka.controllers;
 import com.mamuka.apimamuka.dtos.UsuarioDto;
 import com.mamuka.apimamuka.models.UsuarioModel;
 import com.mamuka.apimamuka.repositories.UsuarioRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,6 +42,11 @@ public class UsuarioController {
     }
 
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+//    @Operation(summary = "Metodo para criar um usuário", method = "POST")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "201", description = "Cadastro de usuário com sucesso")
+//            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos")
+//    })
     public ResponseEntity<Object> cadastrarUsuario(@ModelAttribute @Valid UsuarioDto usuarioDto){
         if (usuarioRepository.findByEmail(usuarioDto.email()) != null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Esse email ja cadastrado!");
@@ -44,6 +54,9 @@ public class UsuarioController {
 
         UsuarioModel usuario = new UsuarioModel();
         BeanUtils.copyProperties(usuarioDto, usuario);
+
+//        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
+//        usuario.setSenha(senhaCriptografada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
@@ -58,6 +71,9 @@ public class UsuarioController {
 
         UsuarioModel usuario = usuarioBuscado.get();
         BeanUtils.copyProperties(usuarioDto, usuario);
+
+//        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
+//        usuario.setSenha(senhaCriptografada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
 
