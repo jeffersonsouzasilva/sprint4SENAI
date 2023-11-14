@@ -42,11 +42,11 @@ public class UsuarioController {
     }
 
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    @Operation(summary = "Metodo para criar um usuário", method = "POST")
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "201", description = "Cadastro de usuário com sucesso")
-//            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos")
-//    })
+    @Operation(summary = "Metodo para criar um usuário", method = "POST")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Cadastro de usuário com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos")
+    })
     public ResponseEntity<Object> cadastrarUsuario(@ModelAttribute @Valid UsuarioDto usuarioDto){
         if (usuarioRepository.findByEmail(usuarioDto.email()) != null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Esse email ja cadastrado!");
@@ -72,8 +72,8 @@ public class UsuarioController {
         UsuarioModel usuario = usuarioBuscado.get();
         BeanUtils.copyProperties(usuarioDto, usuario);
 
-//        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
-//        usuario.setSenha(senhaCriptografada);
+        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
+        usuario.setSenha(senhaCriptografada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
 

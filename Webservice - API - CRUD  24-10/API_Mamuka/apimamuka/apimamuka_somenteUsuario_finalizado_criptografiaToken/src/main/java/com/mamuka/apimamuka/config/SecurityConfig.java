@@ -18,23 +18,23 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-//    @Autowired
-//    SecurityFilter securityFilter;
+    @Autowired
+    SecurityFilter securityFilter;
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-//        return httpSecurity
-//                .csrf(csrf -> csrf.disable())
-//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .authorizeHttpRequests(authorize -> authorize
-//                        // .requestMatchers(HttpMethod.POST, "/servicos").hasRole("CLIENTE") // para fazer no servicos somente CLIENTE
-//                        //.requestMatchers(HttpMethod.POST).authenticated()
-//
-//                        .anyRequest().permitAll() /*permicao totalmente liberada*/
-//                )
-//                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-//                .build();
-//    }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(authorize -> authorize
+                        // .requestMatchers(HttpMethod.POST, "/servicos").hasRole("CLIENTE") // para fazer no servicos somente CLIENTE
+                        //.requestMatchers(HttpMethod.POST).authenticated()
+
+                        .anyRequest().permitAll() /*permicao totalmente liberada*/
+                )
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
     @Bean
     public  AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
         return config.getAuthenticationManager();

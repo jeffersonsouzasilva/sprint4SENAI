@@ -21,7 +21,7 @@ public class TokenService {
             Algorithm algoritmo = Algorithm.HMAC256(secret);
 
             String token = JWT.create()
-                    .withIssuer("api-vsconnect")
+                    .withIssuer("api-mamuka")
                     .withSubject(usuario.getEmail())
                     .withClaim("nomeUsuario", usuario.getNome()) // para enviar um Claim, procurar no material da materia, primeiro dia sobre o assunto dia 06 do 11
                     .withExpiresAt(gerarValidadeToken())
