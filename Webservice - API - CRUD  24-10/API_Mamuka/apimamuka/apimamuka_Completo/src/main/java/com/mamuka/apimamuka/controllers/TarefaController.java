@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/tarefa", produces = {"application/json"})
+@RequestMapping(value = "/tarefas", produces = {"application/json"})
 public class TarefaController {
     @Autowired
     TarefaRepository tarefaRepository;

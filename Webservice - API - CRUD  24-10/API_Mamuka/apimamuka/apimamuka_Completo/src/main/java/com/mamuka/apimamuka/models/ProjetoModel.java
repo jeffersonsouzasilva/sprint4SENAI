@@ -25,12 +25,15 @@ public class ProjetoModel implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_gestor", referencedColumnName = "id")
-    //    private UUID id_gestor ;
     private UsuarioModel gestor ;
 
     private String nome_projeto;
     private String status_projeto;
+
+    @Temporal(TemporalType.DATE)
     private Date data_inicio; // VERFICAR O TIPO DA VARIAVEL
+
+    @Temporal(TemporalType.DATE)
     private Date data_conclusao; // VERFICAR O TIPO DA VARIAVEL
 
 }

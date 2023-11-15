@@ -55,13 +55,13 @@ public class UsuarioController {
         UsuarioModel usuario = new UsuarioModel();
         BeanUtils.copyProperties(usuarioDto, usuario);
 
-//        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
-//        usuario.setSenha(senhaCriptografada);
+        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
+        usuario.setSenha(senhaCriptografada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
-    @PutMapping(value =  "/{idUsuario}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PutMapping(value =  "/{idUsuario}" /**, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}**/)
     public ResponseEntity<Object> editarUsuario(@PathVariable(value = "idUsuario") UUID id, @ModelAttribute @Valid UsuarioDto usuarioDto){
         Optional<UsuarioModel> usuarioBuscado = usuarioRepository.findById(id);
 

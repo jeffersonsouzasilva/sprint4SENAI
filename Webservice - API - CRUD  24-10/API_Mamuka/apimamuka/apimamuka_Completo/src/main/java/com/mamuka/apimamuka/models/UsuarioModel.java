@@ -55,7 +55,7 @@ public class UsuarioModel implements Serializable, UserDetails {
                     );
         } else if (this.tipo_usuario == TipoModel.DESENVOLVEDOR){
             return List.of(new SimpleGrantedAuthority("ROLE_DESENVOLVEDOR"));
-        } else if (this.tipo_usuario == TipoModel.CLIENTE) {
+        } else if (this.tipo_usuario == TipoModel.GESTOR) {
             return List.of(new SimpleGrantedAuthority("ROLE_GESTOR"));
         }
         return null;

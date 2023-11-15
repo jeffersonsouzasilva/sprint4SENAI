@@ -3,7 +3,7 @@ package com.mamuka.apimamuka.models;
 public enum TipoModel {
     ADMIN("admin"),
     DESENVOLVEDOR("dev"),
-    CLIENTE("gestor");
+    GESTOR("gestor");
 
     private String tipo;
 

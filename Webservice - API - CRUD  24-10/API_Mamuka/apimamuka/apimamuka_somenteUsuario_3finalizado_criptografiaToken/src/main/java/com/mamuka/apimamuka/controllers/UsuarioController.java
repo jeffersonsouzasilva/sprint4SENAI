@@ -55,8 +55,8 @@ public class UsuarioController {
         UsuarioModel usuario = new UsuarioModel();
         BeanUtils.copyProperties(usuarioDto, usuario);
 
-//        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
-//        usuario.setSenha(senhaCriptografada);
+        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuarioDto.senha());
+        usuario.setSenha(senhaCriptografada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
