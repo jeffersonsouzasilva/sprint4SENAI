@@ -11,7 +11,7 @@
 	<groupId>com.senai</groupId>
 	<artifactId>apivsconnect</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>apivsconnect</name>
 	<description>API SpringBoot da plataforma VSConnect</description>
 	<properties>
