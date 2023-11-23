@@ -10,4 +10,7 @@ import java.util.UUID;
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, UUID> {
     UserDetails findByEmail(String email);
+
+// adicionar metodo para buscar por nome
+
 }

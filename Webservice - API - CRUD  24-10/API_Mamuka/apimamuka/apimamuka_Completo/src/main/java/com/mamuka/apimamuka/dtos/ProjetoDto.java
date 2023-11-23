@@ -12,7 +12,7 @@ public record ProjetoDto(
         @NotNull UUID id_gestor,
         @NotBlank String nome_projeto,
         @NotBlank String status_projeto,
-        @DateTimeFormat(pattern = "dd/MM/yyyy") Date data_inicio,
-        @DateTimeFormat(pattern = "dd/MM/yyyy") Date data_conclusao
+        @NotNull Date data_inicio,
+        @NotNull Date data_conclusao
 ) {
 }
