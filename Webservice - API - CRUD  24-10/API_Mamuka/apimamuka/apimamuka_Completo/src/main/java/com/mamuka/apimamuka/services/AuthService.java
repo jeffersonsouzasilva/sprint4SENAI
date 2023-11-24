@@ -22,4 +22,17 @@ public class AuthService implements UserDetailsService {
 
         return usuario;
     }
+
+
+    //PARA CRIAR METODO PARA BUSCA POR NOME
+//    @Override
+//    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+//        var nomeUsuario = usuarioRepository.findByName(name);
+//
+//        if (nomeUsuario == null) {
+//            throw new UsernameNotFoundException("Usuário não encontrado!");
+//        }
+//
+//        return nomeUsuario;
+//    }
 }

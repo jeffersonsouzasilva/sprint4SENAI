@@ -35,6 +35,10 @@ public class TarefaModel implements Serializable {
 
     private String nome_tarefa;
     private String status_tarefa;
+
+    @Temporal(TemporalType.DATE)
     private Date data_inicio; // VERFICAR O TIPO DA VARIAVEL
+
+    @Temporal(TemporalType.DATE)
     private Date data_conclusao; // VERFICAR O TIPO DA VARIAVEL
 }
