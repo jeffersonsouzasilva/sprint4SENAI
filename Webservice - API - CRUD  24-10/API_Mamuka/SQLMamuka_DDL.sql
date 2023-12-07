@@ -60,3 +60,6 @@ ADD column senha VARCHAR(255) NOT NULL;
 USE bd_Mamuka;
 SELECT * from tb_projeto;
 SELECT * from  tb_usuario;
+
+
+ALTER TABLE tb_usuario MODIFY status_atividade VARCHAR(255);  /* Descobrir como vai acrescentar NOT NULL */

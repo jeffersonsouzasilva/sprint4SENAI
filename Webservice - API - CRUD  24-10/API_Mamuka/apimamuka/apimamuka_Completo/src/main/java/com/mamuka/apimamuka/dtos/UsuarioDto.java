@@ -11,7 +11,7 @@ public record UsuarioDto (
         @NotBlank String nome,
         @NotBlank String cpf,
         Date data_nascimento,
-        Boolean status_atividade,
+        String status_atividade,
         String departamento,
         String responsavel,
         String perfil,

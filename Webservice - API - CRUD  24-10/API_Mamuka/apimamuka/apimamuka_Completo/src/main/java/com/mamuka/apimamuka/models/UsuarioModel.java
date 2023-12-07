@@ -33,7 +33,7 @@ public class UsuarioModel implements Serializable, UserDetails {
     private String nome;
     private String cpf;
     private Date data_nascimento;
-    private Boolean status_atividade;
+    private String status_atividade;
     private String departamento;
 
 //    private UUID id_responsavel ;

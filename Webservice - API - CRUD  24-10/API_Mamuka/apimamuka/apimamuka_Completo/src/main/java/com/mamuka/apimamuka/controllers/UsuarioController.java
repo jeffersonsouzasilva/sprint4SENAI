@@ -21,6 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin( origins = "*") //politica seguranca, bloquea origens diferentes
 @RequestMapping(value = "/usuarios", produces = {"application/json"})
 public class UsuarioController {
     @Autowired
