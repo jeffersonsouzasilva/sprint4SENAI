@@ -1,5 +1,6 @@
 package com.mamuka.apimamuka.dtos;
 
+import com.mamuka.apimamuka.models.TipoModel;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;

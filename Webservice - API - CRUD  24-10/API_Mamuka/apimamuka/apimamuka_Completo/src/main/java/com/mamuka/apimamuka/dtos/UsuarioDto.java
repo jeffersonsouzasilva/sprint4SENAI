@@ -10,7 +10,7 @@ public record UsuarioDto (
         TipoModel tipo_usuario,
         @NotBlank String nome,
         @NotBlank String cpf,
-        Date data_nascimento,
+        String data_nascimento,
         String status_atividade,
         String departamento,
         String responsavel,

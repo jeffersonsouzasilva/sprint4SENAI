@@ -13,8 +13,8 @@ id BINARY(16) NOT NULL,
 id_tipousuario BINARY(16) NOT NULL,
 nome VARCHAR(255) NOT NULL,
 cpf VARCHAR(255) NOT NULL, /*confirmar*/
-data_nascimento DATE,
-status_atividade BOOL,
+data_nascimento VARCHAR(255),
+status_atividade VARCHAR(255),
 departamento VARCHAR(255) NOT NULL,
 id_responsavel BINARY(16) NOT NULL, /* melhor id(responsavel) para api */
 perfil VARCHAR(255) NOT NULL,
@@ -63,3 +63,4 @@ SELECT * from  tb_usuario;
 
 
 ALTER TABLE tb_usuario MODIFY status_atividade VARCHAR(255);  /* Descobrir como vai acrescentar NOT NULL */
+ALTER TABLE tb_usuario MODIFY data_nascimento VARCHAR(255);
